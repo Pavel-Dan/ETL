@@ -1,0 +1,35 @@
+USE ROLE INGEST;
+
+CREATE OR REPLACE TABLE CLIENT_SUPPORT_ORDERS (
+    TXID VARCHAR(255) NOT NULL,         -- Identifiant unique de transaction
+    CHANNEL VARCHAR(50) NOT NULL,       -- Canal de vente : e-commerce ou store
+    SKU VARCHAR(50) NOT NULL,           -- Identifiant produit
+    ITEM VARCHAR(255) NOT NULL,         -- Nom du produit
+    PRICE NUMBER(10,2) NOT NULL,        -- Prix unitaire
+    QUANTITY NUMBER NOT NULL,           -- Quantité achetée
+    PURCHASE_TIME TIMESTAMP NOT NULL,   -- Date/heure d'achat (UTC)
+    
+    -- Infos client détaillées
+    CUSTOMER_NAME VARCHAR(255) NOT NULL,
+    CUSTOMER_EMAIL VARCHAR(255) NOT NULL,
+    CUSTOMER_STREET VARCHAR(255),
+    CUSTOMER_CITY VARCHAR(255),
+    CUSTOMER_STATE VARCHAR(50),
+    CUSTOMER_POSTALCODE VARCHAR(20),
+    
+    PRIMARY KEY (TXID)
+);
+
+-- Documentation des colonnes
+COMMENT ON TABLE CLIENT_SUPPORT_ORDERS IS 'Uniclothe orders (e-commerce + physical store)';
+COMMENT ON COLUMN CLIENT_SUPPORT_ORDERS.CHANNEL IS 'Sales channel: e-commerce or physical store';
+COMMENT ON COLUMN CLIENT_SUPPORT_ORDERS.SKU IS 'Stock Keeping Unit (unique product ID)';
+COMMENT ON COLUMN CLIENT_SUPPORT_ORDERS.ITEM IS 'Product name';
+COMMENT ON COLUMN CLIENT_SUPPORT_ORDERS.PRICE IS 'Unit price of the product';
+COMMENT ON COLUMN CLIENT_SUPPORT_ORDERS.QUANTITY IS 'Quantity purchased';
+COMMENT ON COLUMN CLIENT_SUPPORT_ORDERS.CUSTOMER_NAME IS 'Full name of the customer';
+COMMENT ON COLUMN CLIENT_SUPPORT_ORDERS.CUSTOMER_EMAIL IS 'Email of the customer';
+COMMENT ON COLUMN CLIENT_SUPPORT_ORDERS.CUSTOMER_STREET IS 'Street address of the customer';
+COMMENT ON COLUMN CLIENT_SUPPORT_ORDERS.CUSTOMER_CITY IS 'City of the customer';
+COMMENT ON COLUMN CLIENT_SUPPORT_ORDERS.CUSTOMER_STATE IS 'State/Region of the customer';
+COMMENT ON COLUMN CLIENT_SUPPORT_ORDERS.CUSTOMER_POSTALCODE IS 'Postal code of the customer';
