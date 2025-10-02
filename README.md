@@ -1,6 +1,6 @@
 # Uniclothe Data Pipeline
 
-## The Goal of this projetc
+## The Goal of this project
 
 Here, we want to build a data pipeline to ...
 
